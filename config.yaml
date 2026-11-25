@@ -1,0 +1,35 @@
+# ReqPilot settings. See docs/plan.md ("Settings") for where each value comes from.
+
+llm:
+  provider: groq                     # Groq free tier (product brief)
+  groq:
+    model: openai/gpt-oss-120b       # same model as JunctionLab; strict structured outputs
+    max_tokens: 4000                 # includes reasoning; revisit in M3 once real output sizes are known
+    reasoning_effort: medium         # low | medium | high
+  calls_per_session: 20              # set by the owner on 2026-11-25
+  calls_per_day: 100                 # set by the owner on 2026-11-25
+  counter_file: var/llm_calls.json   # daily count (UTC date); relative to the repo root
+
+checks:                              # Python checks, method.md section 3
+  vague_words:
+    - user-friendly
+    - etc.
+    - as appropriate
+    - as needed
+    - easy
+    - simple
+    - intuitive
+    - flexible
+    - robust
+    - seamless
+    - and so on
+    - if possible
+  performance_words:                 # flagged when no number and unit follow
+    - fast
+    - quickly
+    - quick
+    - large
+    - slow
+    - near real time
+    - real time
+    - responsive
