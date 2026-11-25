@@ -1,0 +1,48 @@
+STORY 1: As a ward nurse, I want to report broken equipment from the ward PC,
+so that requests are not lost.
+AC1: Given I am logged in with my hospital account, when I submit a request
+with equipment, location and description, then the request is saved and I
+see a reference number.
+AC2: Given I am creating a request, when I attach a photo, then the photo is
+stored with the request.
+AC3: Given a required field is empty, when I submit, then the request is not
+saved and the missing field is shown.
+
+STORY 2: As a biomedical engineer, I want requests to be prioritised with
+life-support equipment first, so that critical equipment is repaired first.
+AC1: Given a request for equipment classified as life-support, when it is
+submitted, then it gets the highest priority.
+
+STORY 3: As a biomedical engineering lead, I want each request routed to the
+right team (imaging, lab, general), so that the right engineers see it.
+AC1: Given a request for imaging equipment, when it is submitted, then it
+appears in the imaging team's queue.
+
+STORY 4: As the head of biomedical engineering, I want to see open requests
+per team and how long each has been open, so that I can manage the workload.
+AC1: Given open requests exist, when I open the overview, then I see the
+number of open requests per team and the age of each request.
+
+STORY 5: As a ward nurse, I want to be notified when the equipment I
+reported is fixed, so that I know it can be used again.
+AC1: Given a request I submitted, when it is marked fixed, then I receive a
+notification.
+
+STORY 6: As a hospital staff member, I want to sign in with my hospital
+login, so that I don't need a separate password.
+AC1: Given I have a hospital account, when I open the system, then I sign in
+with it and no separate password is required.
+
+NON-FUNCTIONAL: none stated
+
+OUT OF SCOPE: none stated
+
+OPEN QUESTIONS:
+- Who sets the priority: the nurse when reporting, or engineering on triage?
+- How is life-support equipment identified: an asset list, or chosen by the
+  nurse?
+- How is a request routed to a team: by equipment type, or chosen manually?
+- What counts as "fixed": repaired, tested, or returned to the ward?
+- How should the nurse be notified: email, in the system, or on the ward PC?
+- Monthly report: format pending from Ravi. Who receives it, and when?
+- Downtime target: not decided. Who decides, and is it a requirement for v1?

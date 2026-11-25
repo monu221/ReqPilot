@@ -1,0 +1,19 @@
+Workshop: purchase request approvals, 19 Nov
+Organisation: Northfield Clinic (invented)
+Attendees: procurement manager (Lena), finance controller (Marc),
+department head of radiology (Dr. Okafor), IT (Tom)
+
+- departments send purchase requests by email with an Excel form today
+- Lena: requests are incomplete, no budget code, no quote attached
+- want an online request form with required budget code and at least one quote
+- Marc: approval depends on amount
+  - under 5,000 EUR: department head only
+  - 5,000 to 50,000 EUR: department head and finance
+  - over 50,000 EUR: also the managing director
+- Dr. Okafor: approvals take weeks, nobody knows where a request is
+- requester should see the status at any time
+- reminder if an approver does not act, Marc suggested after a few days
+- approver must be able to reject with a reason
+- Lena wants to approve urgent requests faster, "urgent" not defined
+- export of approved requests to the ERP system, Tom to check if possible
+- audit trail needed, Marc: "who approved what and when"

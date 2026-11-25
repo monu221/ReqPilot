@@ -1,0 +1,56 @@
+STORY 1: As a treating clinician at another provider, I want validated lab
+results from Northfield Clinic available in the national health record, so
+that I can see them when treating the patient.
+AC1: Given a lab result is validated and the patient has consented, when
+validation is completed, then the result is sent to NHX as a FHIR resource
+in the format of the NHX specification.
+AC2: Given a lab result is not yet validated, when it is saved, then it is
+not sent.
+
+STORY 2: As a data protection officer, I want results sent only for patients
+who have consented, so that patient data is shared lawfully.
+AC1: Given the HIS records no consent for the patient, when a result is
+validated, then it is not sent and the reason is logged.
+
+STORY 3: As a lab manager, I want a corrected result to replace the earlier
+version in NHX, so that no outdated or duplicate results are shown.
+AC1: Given a result was already sent, when a corrected version is validated,
+then NHX receives it as an update of the same result, not as a new result.
+
+STORY 4: As an integration lead, I want every message to NHX authenticated
+with a token, so that only authorised systems can send data.
+AC1: Given a message is sent, when it is transmitted, then it carries a
+valid NHX token.
+AC2: Given the token is invalid or expired, when a message is sent, then it
+is not transmitted and an error is logged.
+
+STORY 5: As an integration lead, I want messages kept and retried when NHX
+is unavailable, so that no result is lost.
+AC1: Given NHX does not respond, when a message is sent, then it is queued
+and retried until it is delivered or the retry limit is reached.
+AC2: Given the retry limit is reached, when the last retry fails, then the
+message is shown for manual follow-up.
+
+STORY 6: As an integration support analyst, I want to see messages rejected
+by NHX with the reason, so that I can correct and resend them.
+AC1: Given NHX rejects a message, when the rejection is received, then it
+appears in a rejection list with the reason, and can be resent after
+correction.
+
+NON-FUNCTIONAL:
+- Volume: about 3,000 results per day, with a morning peak.
+- Latency: results sent "near real time" (target to be defined).
+
+OUT OF SCOPE (unchanged process):
+- Critical results are still phoned to the doctor; the integration does not
+  replace this.
+
+OPEN QUESTIONS:
+- "Near real time": what is the maximum delay from validation to delivery?
+- Peak load: how many results per hour at the morning peak?
+- Retries: how often, for how long, and who is alerted when they stop?
+- Who owns the rejection list, and within what time must rejections be fixed?
+- Consent: what happens when consent is withdrawn after a result was sent?
+- Is consent checked per result or per patient, and how current must it be?
+- Go-live: what is the confirmed national deadline?
+- Which version of the NHX FHIR specification applies?

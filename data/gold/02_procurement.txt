@@ -1,0 +1,59 @@
+STORY 1: As a department staff member, I want to submit a purchase request
+through an online form, so that requests are complete and not lost in email.
+AC1: Given I am logged in, when I submit a request without a budget code,
+then it is not submitted and the missing budget code is shown.
+AC2: Given I am submitting a request, when no quote is attached, then it is
+not submitted and I am asked to attach at least one quote.
+AC3: Given all required fields and a quote are provided, when I submit,
+then the request is saved with a reference number.
+
+STORY 2: As a finance controller, I want each request routed to the right
+approvers based on its amount, so that the approval rules are applied
+consistently.
+AC1: Given a request under 5,000 EUR, when it is submitted, then only the
+department head is asked to approve.
+AC2: Given a request between 5,000 and 50,000 EUR, when it is submitted,
+then the department head and finance are asked to approve.
+AC3: Given a request over 50,000 EUR, when it is submitted, then the
+department head, finance and the managing director are asked to approve.
+
+STORY 3: As a requester, I want to see the status of my request at any
+time, so that I know where it is in the approval process.
+AC1: Given I submitted a request, when I open it, then I see its current
+status and which approver it is waiting for.
+
+STORY 4: As an approver, I want to receive a reminder when a request is
+waiting for me, so that requests are not delayed.
+AC1: Given a request has waited for my approval longer than the reminder
+period, when the period ends, then I receive a reminder.
+
+STORY 5: As an approver, I want to reject a request with a reason, so that
+the requester knows what to change.
+AC1: Given I reject a request, when I do not enter a reason, then the
+rejection is not saved.
+AC2: Given I reject a request with a reason, when I save, then the
+requester is notified with the reason.
+
+STORY 6: As a finance controller, I want an audit trail of all approval
+actions, so that I can see who approved what and when.
+AC1: Given any approval or rejection, when it is saved, then the user, the
+action, the date and the time are recorded and cannot be changed.
+
+STORY 7: As a procurement manager, I want approved requests exported to the
+ERP system, so that orders do not have to be entered twice.
+AC1: Given a request is fully approved, when the export runs, then the
+request appears in the ERP system.
+
+NON-FUNCTIONAL: none stated
+
+OUT OF SCOPE: none stated
+
+OPEN QUESTIONS:
+- Reminder period: "a few days" - how many working days exactly?
+- Approval thresholds: which level applies at exactly 5,000 EUR and 50,000 EUR?
+- Is the amount judged including or excluding VAT?
+- What counts as "urgent", who can mark it, and how is it approved faster?
+- Who approves when an approver is absent (deputy or escalation)?
+- ERP export: is it technically possible (Tom to check)? If not, is a file
+  export acceptable for v1?
+- How long must the audit trail be kept?

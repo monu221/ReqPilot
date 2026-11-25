@@ -1,0 +1,13 @@
+Workshop: equipment maintenance requests, 12 Nov
+Organisation: Northfield Clinic (invented)
+Attendees: head of biomedical engineering (Ravi), ward manager (Anna), IT (Tom)
+
+- Anna: nurses report broken equipment by phone today, requests often get lost
+- want to report from the ward PC, with a photo if possible
+- Ravi: engineers need a priority, life-support equipment first
+- requests should go to the right engineering team (imaging, lab, general)
+- Ravi wants to see open requests per team and how long they have been open
+- Tom: must use the hospital login, no separate passwords
+- notify the nurse when the equipment is fixed
+- monthly report for management, Ravi will send the format
+- a downtime target was mentioned but not decided

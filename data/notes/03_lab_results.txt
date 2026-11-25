@@ -1,0 +1,17 @@
+Workshop: lab results to national health record, 24 Nov
+Organisation: Northfield Clinic (invented), national exchange hub "NHX" (invented)
+Attendees: lab manager (Priya), integration lead (Jonas), data protection
+officer (Mrs. Weber), clinician representative (Dr. Lin)
+
+- lab results stay in the hospital system today, other providers cannot see them
+- NHX requires results sent as FHIR resources, Jonas has the spec
+- send results automatically once the lab validates them
+- Priya: corrected results must replace the earlier version, not duplicate it
+- Dr. Lin: critical results must still be phoned to the doctor, as today
+- Mrs. Weber: send only if the patient has consented, consent stored in the HIS
+- every message must be authenticated, NHX uses tokens
+- if NHX is down, messages should not be lost, retry later
+- Jonas: NHX can reject a message, someone must see and fix the rejections
+- volume roughly 3,000 results per day, peak in the morning
+- should be "near real time", nobody defined a number
+- go-live wanted before the national deadline, date not confirmed
