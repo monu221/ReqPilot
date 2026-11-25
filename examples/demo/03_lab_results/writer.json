@@ -1,0 +1,191 @@
+{
+  "fake": true,
+  "label": "FAKE: hand-written demo data, not real model output",
+  "set": "03_lab_results",
+  "kind": "writer",
+  "purpose": "Demo writer output. Deliberate faults: S5 invented 'every 5 minutes for up to 24 hours'; N2 'near real time' has no measure.",
+  "content": {
+    "stories": [
+      {
+        "id": "S1",
+        "role": "clinician at another provider",
+        "goal": "validated lab results from Northfield Clinic available in the national health record",
+        "benefit": "I can see them when treating the patient",
+        "source_sentences": [
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "id": "S2",
+        "role": "data protection officer",
+        "goal": "results sent only for patients who have consented",
+        "benefit": "patient data is shared lawfully",
+        "source_sentences": [
+          9
+        ]
+      },
+      {
+        "id": "S3",
+        "role": "lab manager",
+        "goal": "a corrected result to replace the earlier version in NHX",
+        "benefit": "no outdated or duplicate results are shown",
+        "source_sentences": [
+          7
+        ]
+      },
+      {
+        "id": "S4",
+        "role": "integration lead",
+        "goal": "every message to NHX authenticated with a token",
+        "benefit": "only authorised systems can send data",
+        "source_sentences": [
+          10
+        ]
+      },
+      {
+        "id": "S5",
+        "role": "integration lead",
+        "goal": "messages kept and retried when NHX is unavailable",
+        "benefit": "no result is lost",
+        "source_sentences": [
+          11
+        ]
+      },
+      {
+        "id": "S6",
+        "role": "integration lead",
+        "goal": "to see messages rejected by NHX with the reason",
+        "benefit": "the rejections can be fixed and resent",
+        "source_sentences": [
+          12
+        ]
+      }
+    ],
+    "criteria": [
+      {
+        "id": "S1-AC1",
+        "story_id": "S1",
+        "given": "a lab result is validated and the patient has consented",
+        "when": "validation is completed",
+        "then": "the result is sent to NHX as a FHIR resource as the NHX specification requires"
+      },
+      {
+        "id": "S1-AC2",
+        "story_id": "S1",
+        "given": "a lab result is not yet validated",
+        "when": "it is saved",
+        "then": "it is not sent"
+      },
+      {
+        "id": "S2-AC1",
+        "story_id": "S2",
+        "given": "the HIS records no consent for the patient",
+        "when": "a result is validated",
+        "then": "it is not sent and the reason is logged"
+      },
+      {
+        "id": "S3-AC1",
+        "story_id": "S3",
+        "given": "a result was already sent",
+        "when": "a corrected version is validated",
+        "then": "NHX receives it as an update of the same result, not as a new result"
+      },
+      {
+        "id": "S4-AC1",
+        "story_id": "S4",
+        "given": "a message is ready",
+        "when": "it is transmitted",
+        "then": "it carries a valid NHX token"
+      },
+      {
+        "id": "S4-AC2",
+        "story_id": "S4",
+        "given": "the token is invalid or expired",
+        "when": "a message is sent",
+        "then": "it is not transmitted and an error is logged"
+      },
+      {
+        "id": "S5-AC1",
+        "story_id": "S5",
+        "given": "NHX does not respond",
+        "when": "a message is sent",
+        "then": "it is retried every 5 minutes for up to 24 hours"
+      },
+      {
+        "id": "S6-AC1",
+        "story_id": "S6",
+        "given": "NHX rejects a message",
+        "when": "the rejection is received",
+        "then": "it appears in a rejection list with the reason and can be resent after correction"
+      }
+    ],
+    "open_questions": [
+      {
+        "id": "Q1",
+        "topic": "Delivery delay",
+        "question": "What is the maximum delay from validation to delivery that counts as 'near real time'?",
+        "related_story_ids": []
+      },
+      {
+        "id": "Q2",
+        "topic": "Morning peak",
+        "question": "How many results per hour arrive at the morning peak?",
+        "related_story_ids": []
+      },
+      {
+        "id": "Q3",
+        "topic": "Retry policy",
+        "question": "How often and for how long are messages retried, and who is alerted when retries stop?",
+        "related_story_ids": [
+          "S5"
+        ]
+      },
+      {
+        "id": "Q4",
+        "topic": "Rejection owner",
+        "question": "Who owns the rejection list, and how fast must rejections be fixed?",
+        "related_story_ids": [
+          "S6"
+        ]
+      },
+      {
+        "id": "Q5",
+        "topic": "Go-live date",
+        "question": "What is the confirmed national deadline?",
+        "related_story_ids": []
+      }
+    ],
+    "non_functional": [
+      {
+        "id": "N1",
+        "category": "volume",
+        "statement": "Roughly 3,000 results per day, with a peak in the morning.",
+        "measure": "3,000 results per day",
+        "source_sentences": [
+          13
+        ]
+      },
+      {
+        "id": "N2",
+        "category": "latency",
+        "statement": "Results are sent near real time.",
+        "measure": "",
+        "source_sentences": [
+          14
+        ]
+      }
+    ],
+    "out_of_scope": [
+      {
+        "id": "X1",
+        "statement": "Critical results are still phoned to the doctor, as today.",
+        "reason": "unchanged process",
+        "source_sentences": [
+          8
+        ]
+      }
+    ]
+  }
+}

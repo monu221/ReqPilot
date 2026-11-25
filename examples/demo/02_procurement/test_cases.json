@@ -1,0 +1,172 @@
+{
+  "fake": true,
+  "label": "FAKE: hand-written demo data, not real model output",
+  "set": "02_procurement",
+  "kind": "test_cases",
+  "purpose": "Demo test cases, one per criterion.",
+  "content": {
+    "test_cases": [
+      {
+        "id": "T1",
+        "criterion_id": "S1-AC1",
+        "title": "Budget code required",
+        "preconditions": [
+          "Staff member is logged in"
+        ],
+        "steps": [
+          "Fill in the request without a budget code",
+          "Submit"
+        ],
+        "expected_result": "The request is not submitted and the budget code field is marked as missing."
+      },
+      {
+        "id": "T2",
+        "criterion_id": "S1-AC2",
+        "title": "Quote required",
+        "preconditions": [
+          "Staff member is logged in"
+        ],
+        "steps": [
+          "Fill in the request without attaching a quote",
+          "Submit"
+        ],
+        "expected_result": "The request is not submitted and the user is asked to attach at least one quote."
+      },
+      {
+        "id": "T3",
+        "criterion_id": "S1-AC3",
+        "title": "Complete request is saved",
+        "preconditions": [
+          "Staff member is logged in"
+        ],
+        "steps": [
+          "Fill in all required fields",
+          "Attach one quote",
+          "Submit"
+        ],
+        "expected_result": "The request is saved and a reference number is shown."
+      },
+      {
+        "id": "T4",
+        "criterion_id": "S2-AC1",
+        "title": "Under 5,000 EUR: department head only",
+        "preconditions": [],
+        "steps": [
+          "Submit a request for 4,999 EUR"
+        ],
+        "expected_result": "Only the department head is asked to approve."
+      },
+      {
+        "id": "T5",
+        "criterion_id": "S2-AC2",
+        "title": "5,000 to 50,000 EUR: head and finance",
+        "preconditions": [],
+        "steps": [
+          "Submit a request for 20,000 EUR"
+        ],
+        "expected_result": "The department head and finance are asked to approve."
+      },
+      {
+        "id": "T6",
+        "criterion_id": "S2-AC3",
+        "title": "Over 50,000 EUR: managing director too",
+        "preconditions": [],
+        "steps": [
+          "Submit a request for 60,000 EUR"
+        ],
+        "expected_result": "The department head, finance and the managing director are asked to approve."
+      },
+      {
+        "id": "T7",
+        "criterion_id": "S3-AC1",
+        "title": "Requester sees status",
+        "preconditions": [
+          "Requester has submitted a request"
+        ],
+        "steps": [
+          "Open the request"
+        ],
+        "expected_result": "The current status and the awaited approver are shown."
+      },
+      {
+        "id": "T8",
+        "criterion_id": "S4-AC1",
+        "title": "Reminder after the waiting period",
+        "preconditions": [
+          "A request is waiting for an approver"
+        ],
+        "steps": [
+          "Let the reminder period pass without action"
+        ],
+        "expected_result": "The approver receives a reminder."
+      },
+      {
+        "id": "T9",
+        "criterion_id": "S5-AC1",
+        "title": "Rejection needs a reason",
+        "preconditions": [
+          "Approver has a request to approve"
+        ],
+        "steps": [
+          "Choose reject",
+          "Leave the reason empty",
+          "Save"
+        ],
+        "expected_result": "The rejection is not saved."
+      },
+      {
+        "id": "T10",
+        "criterion_id": "S5-AC2",
+        "title": "Requester gets the rejection reason",
+        "preconditions": [
+          "Approver has a request to approve"
+        ],
+        "steps": [
+          "Choose reject",
+          "Enter a reason",
+          "Save"
+        ],
+        "expected_result": "The requester is notified with the reason."
+      },
+      {
+        "id": "T11",
+        "criterion_id": "S6-AC1",
+        "title": "Approval is recorded",
+        "preconditions": [
+          "A request is waiting for approval"
+        ],
+        "steps": [
+          "Approve the request",
+          "Open the audit trail",
+          "Try to edit the entry"
+        ],
+        "expected_result": "User, action, date and time are recorded, and the entry cannot be changed."
+      },
+      {
+        "id": "T12",
+        "criterion_id": "S7-AC1",
+        "title": "Approved request reaches the ERP",
+        "preconditions": [
+          "A request is fully approved"
+        ],
+        "steps": [
+          "Run the export",
+          "Search for the request in the ERP system"
+        ],
+        "expected_result": "The request appears in the ERP system."
+      },
+      {
+        "id": "T13",
+        "criterion_id": "S8-AC1",
+        "title": "Urgent request handling",
+        "preconditions": [
+          "A request is marked urgent"
+        ],
+        "steps": [
+          "Submit the request"
+        ],
+        "expected_result": "The request is approved as appropriate."
+      }
+    ]
+  }
+}

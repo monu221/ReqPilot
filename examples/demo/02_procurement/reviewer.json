@@ -1,0 +1,251 @@
+{
+  "fake": true,
+  "label": "FAKE: hand-written demo data, not real model output",
+  "set": "02_procurement",
+  "kind": "reviewer",
+  "purpose": "Demo reviewer output. It catches the wrong source in S6, which the Python checks cannot see (sentence 16 exists).",
+  "content": {
+    "stories": [
+      {
+        "story_id": "S1",
+        "specific_role": {
+          "passed": true,
+          "reason": ""
+        },
+        "single_goal": {
+          "passed": true,
+          "reason": ""
+        },
+        "testable_criteria": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_vague_words": {
+          "passed": true,
+          "reason": ""
+        },
+        "traceable": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_invented_facts": {
+          "passed": true,
+          "reason": ""
+        }
+      },
+      {
+        "story_id": "S2",
+        "specific_role": {
+          "passed": true,
+          "reason": ""
+        },
+        "single_goal": {
+          "passed": true,
+          "reason": ""
+        },
+        "testable_criteria": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_vague_words": {
+          "passed": true,
+          "reason": ""
+        },
+        "traceable": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_invented_facts": {
+          "passed": true,
+          "reason": ""
+        }
+      },
+      {
+        "story_id": "S3",
+        "specific_role": {
+          "passed": true,
+          "reason": ""
+        },
+        "single_goal": {
+          "passed": true,
+          "reason": ""
+        },
+        "testable_criteria": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_vague_words": {
+          "passed": true,
+          "reason": ""
+        },
+        "traceable": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_invented_facts": {
+          "passed": true,
+          "reason": ""
+        }
+      },
+      {
+        "story_id": "S4",
+        "specific_role": {
+          "passed": true,
+          "reason": ""
+        },
+        "single_goal": {
+          "passed": true,
+          "reason": ""
+        },
+        "testable_criteria": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_vague_words": {
+          "passed": true,
+          "reason": ""
+        },
+        "traceable": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_invented_facts": {
+          "passed": false,
+          "reason": "'3 working days' is not in the notes; Marc only said 'after a few days'."
+        }
+      },
+      {
+        "story_id": "S5",
+        "specific_role": {
+          "passed": true,
+          "reason": ""
+        },
+        "single_goal": {
+          "passed": true,
+          "reason": ""
+        },
+        "testable_criteria": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_vague_words": {
+          "passed": true,
+          "reason": ""
+        },
+        "traceable": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_invented_facts": {
+          "passed": true,
+          "reason": ""
+        }
+      },
+      {
+        "story_id": "S6",
+        "specific_role": {
+          "passed": true,
+          "reason": ""
+        },
+        "single_goal": {
+          "passed": true,
+          "reason": ""
+        },
+        "testable_criteria": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_vague_words": {
+          "passed": true,
+          "reason": ""
+        },
+        "traceable": {
+          "passed": false,
+          "reason": "Sentence 16 is about the ERP export; the audit trail is sentence 17."
+        },
+        "no_invented_facts": {
+          "passed": true,
+          "reason": ""
+        }
+      },
+      {
+        "story_id": "S7",
+        "specific_role": {
+          "passed": true,
+          "reason": ""
+        },
+        "single_goal": {
+          "passed": true,
+          "reason": ""
+        },
+        "testable_criteria": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_vague_words": {
+          "passed": true,
+          "reason": ""
+        },
+        "traceable": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_invented_facts": {
+          "passed": true,
+          "reason": ""
+        }
+      },
+      {
+        "story_id": "S8",
+        "specific_role": {
+          "passed": true,
+          "reason": ""
+        },
+        "single_goal": {
+          "passed": true,
+          "reason": ""
+        },
+        "testable_criteria": {
+          "passed": false,
+          "reason": "'approved as appropriate' cannot be tested."
+        },
+        "no_vague_words": {
+          "passed": false,
+          "reason": "'as appropriate' is vague."
+        },
+        "traceable": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_invented_facts": {
+          "passed": true,
+          "reason": ""
+        }
+      }
+    ],
+    "non_functional": [],
+    "open_questions": [
+      {
+        "topic": "Reminder period",
+        "question": "How many working days is 'a few days' before a reminder?",
+        "related_story_ids": [
+          "S4"
+        ]
+      },
+      {
+        "topic": "Absent approver",
+        "question": "Who approves when an approver is absent: a deputy, or an escalation?",
+        "related_story_ids": [
+          "S2"
+        ]
+      },
+      {
+        "topic": "Audit retention",
+        "question": "How long must the audit trail be kept?",
+        "related_story_ids": [
+          "S6"
+        ]
+      }
+    ]
+  }
+}

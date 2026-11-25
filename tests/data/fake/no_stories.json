@@ -1,0 +1,2 @@
+{"fake": true, "label": "FAKE: hand-written demo data, not real model output", "purpose": "Writer answer with no stories (for example notes that are not about requirements).",
+ "content": {"stories": [], "criteria": [], "open_questions": [], "non_functional": [], "out_of_scope": []}}

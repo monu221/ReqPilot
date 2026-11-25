@@ -1,0 +1,112 @@
+{
+  "fake": true,
+  "label": "FAKE: hand-written demo data, not real model output",
+  "set": "03_lab_results",
+  "kind": "test_cases",
+  "purpose": "Demo test cases, one per criterion.",
+  "content": {
+    "test_cases": [
+      {
+        "id": "T1",
+        "criterion_id": "S1-AC1",
+        "title": "Validated result is sent as FHIR",
+        "preconditions": [
+          "Patient has consent recorded in the HIS"
+        ],
+        "steps": [
+          "Validate a lab result",
+          "Inspect the message sent to the NHX test endpoint"
+        ],
+        "expected_result": "A FHIR resource matching the NHX specification is received."
+      },
+      {
+        "id": "T2",
+        "criterion_id": "S1-AC2",
+        "title": "Unvalidated result is not sent",
+        "preconditions": [],
+        "steps": [
+          "Save a lab result without validating it"
+        ],
+        "expected_result": "No message is sent to NHX."
+      },
+      {
+        "id": "T3",
+        "criterion_id": "S2-AC1",
+        "title": "No consent, no message",
+        "preconditions": [
+          "The HIS has no consent for the patient"
+        ],
+        "steps": [
+          "Validate a lab result",
+          "Check the log"
+        ],
+        "expected_result": "Nothing is sent, and the log states missing consent as the reason."
+      },
+      {
+        "id": "T4",
+        "criterion_id": "S3-AC1",
+        "title": "Correction updates the same result",
+        "preconditions": [
+          "A result was already sent"
+        ],
+        "steps": [
+          "Correct and re-validate the result",
+          "Inspect the message sent to NHX"
+        ],
+        "expected_result": "The message updates the existing result rather than creating a new one."
+      },
+      {
+        "id": "T5",
+        "criterion_id": "S4-AC1",
+        "title": "Messages carry a token",
+        "preconditions": [
+          "A valid NHX token is configured"
+        ],
+        "steps": [
+          "Send a message"
+        ],
+        "expected_result": "The message carries a valid NHX token."
+      },
+      {
+        "id": "T6",
+        "criterion_id": "S4-AC2",
+        "title": "Invalid token blocks sending",
+        "preconditions": [
+          "The configured token is expired"
+        ],
+        "steps": [
+          "Send a message",
+          "Check the log"
+        ],
+        "expected_result": "The message is not transmitted and an error is logged."
+      },
+      {
+        "id": "T7",
+        "criterion_id": "S5-AC1",
+        "title": "Retry when NHX is down",
+        "preconditions": [
+          "The NHX test endpoint is unavailable"
+        ],
+        "steps": [
+          "Validate a result",
+          "Make the endpoint available again"
+        ],
+        "expected_result": "The message is retried and delivered once NHX responds."
+      },
+      {
+        "id": "T8",
+        "criterion_id": "S6-AC1",
+        "title": "Rejected message can be corrected and resent",
+        "preconditions": [
+          "The NHX test endpoint rejects a message"
+        ],
+        "steps": [
+          "Open the rejection list",
+          "Correct the message",
+          "Resend"
+        ],
+        "expected_result": "The rejection is listed with its reason, and the corrected message is resent."
+      }
+    ]
+  }
+}

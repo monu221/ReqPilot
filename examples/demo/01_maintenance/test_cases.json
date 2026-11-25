@@ -1,0 +1,125 @@
+{
+  "fake": true,
+  "label": "FAKE: hand-written demo data, not real model output",
+  "set": "01_maintenance",
+  "kind": "test_cases",
+  "purpose": "Demo test cases, one per criterion.",
+  "content": {
+    "test_cases": [
+      {
+        "id": "T1",
+        "criterion_id": "S1-AC1",
+        "title": "Submit a complete request",
+        "preconditions": [
+          "Nurse is logged in on a ward PC"
+        ],
+        "steps": [
+          "Open the new request form",
+          "Enter equipment, location and description",
+          "Submit"
+        ],
+        "expected_result": "The request is saved and a reference number is shown."
+      },
+      {
+        "id": "T2",
+        "criterion_id": "S1-AC2",
+        "title": "Attach a photo",
+        "preconditions": [
+          "Nurse is creating a request"
+        ],
+        "steps": [
+          "Attach a photo",
+          "Submit the request",
+          "Open the saved request"
+        ],
+        "expected_result": "The photo is stored with the request."
+      },
+      {
+        "id": "T3",
+        "criterion_id": "S1-AC3",
+        "title": "Missing required field",
+        "preconditions": [
+          "Nurse is creating a request"
+        ],
+        "steps": [
+          "Leave the location empty",
+          "Submit"
+        ],
+        "expected_result": "The request is not saved and the location field is marked as missing."
+      },
+      {
+        "id": "T4",
+        "criterion_id": "S2-AC1",
+        "title": "Life-support request gets top priority",
+        "preconditions": [
+          "A device is classified as life-support"
+        ],
+        "steps": [
+          "Submit a request for that device",
+          "Open the engineering queue"
+        ],
+        "expected_result": "The request has the highest priority."
+      },
+      {
+        "id": "T5",
+        "criterion_id": "S3-AC1",
+        "title": "Imaging request goes to imaging",
+        "preconditions": [],
+        "steps": [
+          "Submit a request for an imaging device",
+          "Open the imaging team's queue"
+        ],
+        "expected_result": "The request appears in the imaging team's queue."
+      },
+      {
+        "id": "T6",
+        "criterion_id": "S4-AC1",
+        "title": "Overview shows open requests per team",
+        "preconditions": [
+          "Open requests exist for two teams"
+        ],
+        "steps": [
+          "Open the overview"
+        ],
+        "expected_result": "The number of open requests per team and the age of each request are shown."
+      },
+      {
+        "id": "T7",
+        "criterion_id": "S5-AC1",
+        "title": "Nurse notified when fixed",
+        "preconditions": [
+          "Nurse submitted a request"
+        ],
+        "steps": [
+          "Engineer marks the request fixed"
+        ],
+        "expected_result": "The nurse receives a notification."
+      },
+      {
+        "id": "T8",
+        "criterion_id": "S6-AC1",
+        "title": "Sign in with hospital login",
+        "preconditions": [
+          "User has a hospital account"
+        ],
+        "steps": [
+          "Open the system",
+          "Sign in with the hospital account"
+        ],
+        "expected_result": "The user is signed in and no separate password is asked for."
+      },
+      {
+        "id": "T9",
+        "criterion_id": "S7-AC1",
+        "title": "Monthly report delivered",
+        "preconditions": [
+          "A month has ended"
+        ],
+        "steps": [
+          "Produce the monthly report"
+        ],
+        "expected_result": "The head of biomedical engineering receives it."
+      }
+    ]
+  }
+}

@@ -1,0 +1,223 @@
+{
+  "fake": true,
+  "label": "FAKE: hand-written demo data, not real model output",
+  "set": "01_maintenance",
+  "kind": "reviewer",
+  "purpose": "Demo reviewer output. It misses S4's 'quickly' (the Python check catches it) and catches S6's generic role (no Python check covers that).",
+  "content": {
+    "stories": [
+      {
+        "story_id": "S1",
+        "specific_role": {
+          "passed": true,
+          "reason": ""
+        },
+        "single_goal": {
+          "passed": true,
+          "reason": ""
+        },
+        "testable_criteria": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_vague_words": {
+          "passed": true,
+          "reason": ""
+        },
+        "traceable": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_invented_facts": {
+          "passed": true,
+          "reason": ""
+        }
+      },
+      {
+        "story_id": "S2",
+        "specific_role": {
+          "passed": true,
+          "reason": ""
+        },
+        "single_goal": {
+          "passed": true,
+          "reason": ""
+        },
+        "testable_criteria": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_vague_words": {
+          "passed": true,
+          "reason": ""
+        },
+        "traceable": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_invented_facts": {
+          "passed": true,
+          "reason": ""
+        }
+      },
+      {
+        "story_id": "S3",
+        "specific_role": {
+          "passed": true,
+          "reason": ""
+        },
+        "single_goal": {
+          "passed": true,
+          "reason": ""
+        },
+        "testable_criteria": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_vague_words": {
+          "passed": true,
+          "reason": ""
+        },
+        "traceable": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_invented_facts": {
+          "passed": true,
+          "reason": ""
+        }
+      },
+      {
+        "story_id": "S4",
+        "specific_role": {
+          "passed": true,
+          "reason": ""
+        },
+        "single_goal": {
+          "passed": true,
+          "reason": ""
+        },
+        "testable_criteria": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_vague_words": {
+          "passed": true,
+          "reason": ""
+        },
+        "traceable": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_invented_facts": {
+          "passed": true,
+          "reason": ""
+        }
+      },
+      {
+        "story_id": "S5",
+        "specific_role": {
+          "passed": true,
+          "reason": ""
+        },
+        "single_goal": {
+          "passed": false,
+          "reason": "'is fixed and track its repair' joins two goals: notification and repair tracking."
+        },
+        "testable_criteria": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_vague_words": {
+          "passed": true,
+          "reason": ""
+        },
+        "traceable": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_invented_facts": {
+          "passed": true,
+          "reason": ""
+        }
+      },
+      {
+        "story_id": "S6",
+        "specific_role": {
+          "passed": false,
+          "reason": "'user' is generic; the notes concern hospital staff signing in with the hospital login."
+        },
+        "single_goal": {
+          "passed": true,
+          "reason": ""
+        },
+        "testable_criteria": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_vague_words": {
+          "passed": true,
+          "reason": ""
+        },
+        "traceable": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_invented_facts": {
+          "passed": true,
+          "reason": ""
+        }
+      },
+      {
+        "story_id": "S7",
+        "specific_role": {
+          "passed": true,
+          "reason": ""
+        },
+        "single_goal": {
+          "passed": true,
+          "reason": ""
+        },
+        "testable_criteria": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_vague_words": {
+          "passed": true,
+          "reason": ""
+        },
+        "traceable": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_invented_facts": {
+          "passed": false,
+          "reason": "'within 5 working days of month end' is not in the notes."
+        }
+      }
+    ],
+    "non_functional": [
+      {
+        "id": "N1",
+        "measurable": false,
+        "reason": "No downtime figure is given."
+      }
+    ],
+    "open_questions": [
+      {
+        "topic": "Notification channel",
+        "question": "How should the nurse be notified: email, in the system, or on the ward PC?",
+        "related_story_ids": [
+          "S5"
+        ]
+      },
+      {
+        "topic": "Report recipients",
+        "question": "Who receives the monthly report, and when?",
+        "related_story_ids": [
+          "S7"
+        ]
+      }
+    ]
+  }
+}

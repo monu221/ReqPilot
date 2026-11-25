@@ -1,0 +1,3 @@
+{"fake": true, "label": "FAKE: hand-written demo data, not real model output", "purpose": "Groq 429 on the per-minute token limit.",
+ "http": {"status": 429, "headers": {"retry-after": "42"},
+          "body": {"error": {"message": "Rate limit reached for model on tokens per minute (TPM)", "type": "tokens", "code": "rate_limit_exceeded"}}}}

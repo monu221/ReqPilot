@@ -1,0 +1,4 @@
+{"fake": true, "label": "FAKE: hand-written demo data, not real model output", "purpose": "Writer answer whose criterion refers to a story that does not exist.",
+ "content": {"stories": [{"id": "S1", "role": "nurse", "goal": "to report faults", "benefit": "they are fixed", "source_sentences": [1]}],
+             "criteria": [{"id": "S2-AC1", "story_id": "S2", "given": "g", "when": "w", "then": "t"}],
+             "open_questions": [], "non_functional": [], "out_of_scope": []}}

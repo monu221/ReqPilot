@@ -1,0 +1,2 @@
+{"fake": true, "label": "FAKE: hand-written demo data, not real model output", "purpose": "Groq 400 when the model's output fails strict schema validation.",
+ "http": {"status": 400, "body": {"error": {"message": "Generated JSON does not match the expected schema.", "type": "invalid_request_error", "code": "json_validate_failed"}}}}

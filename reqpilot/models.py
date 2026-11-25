@@ -69,6 +69,7 @@ class NonFunctional(_Model):
     statement: str = _Text
     measure: str = Field(default="", description="Number and unit; empty if the notes give none")
     source_sentences: list[int] = Field(default_factory=list)
+    status: StoryStatus = StoryStatus.DRAFT
 
 
 class OutOfScope(_Model):
@@ -76,6 +77,7 @@ class OutOfScope(_Model):
     statement: str = _Text
     reason: str = ""
     source_sentences: list[int] = Field(default_factory=list)
+    status: StoryStatus = StoryStatus.DRAFT
 
 
 class Rule(StrEnum):

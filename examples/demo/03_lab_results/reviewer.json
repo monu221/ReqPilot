@@ -1,0 +1,208 @@
+{
+  "fake": true,
+  "label": "FAKE: hand-written demo data, not real model output",
+  "set": "03_lab_results",
+  "kind": "reviewer",
+  "purpose": "Demo reviewer output. Agrees with the Python checks on S5 and N2.",
+  "content": {
+    "stories": [
+      {
+        "story_id": "S1",
+        "specific_role": {
+          "passed": true,
+          "reason": ""
+        },
+        "single_goal": {
+          "passed": true,
+          "reason": ""
+        },
+        "testable_criteria": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_vague_words": {
+          "passed": true,
+          "reason": ""
+        },
+        "traceable": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_invented_facts": {
+          "passed": true,
+          "reason": ""
+        }
+      },
+      {
+        "story_id": "S2",
+        "specific_role": {
+          "passed": true,
+          "reason": ""
+        },
+        "single_goal": {
+          "passed": true,
+          "reason": ""
+        },
+        "testable_criteria": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_vague_words": {
+          "passed": true,
+          "reason": ""
+        },
+        "traceable": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_invented_facts": {
+          "passed": true,
+          "reason": ""
+        }
+      },
+      {
+        "story_id": "S3",
+        "specific_role": {
+          "passed": true,
+          "reason": ""
+        },
+        "single_goal": {
+          "passed": true,
+          "reason": ""
+        },
+        "testable_criteria": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_vague_words": {
+          "passed": true,
+          "reason": ""
+        },
+        "traceable": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_invented_facts": {
+          "passed": true,
+          "reason": ""
+        }
+      },
+      {
+        "story_id": "S4",
+        "specific_role": {
+          "passed": true,
+          "reason": ""
+        },
+        "single_goal": {
+          "passed": true,
+          "reason": ""
+        },
+        "testable_criteria": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_vague_words": {
+          "passed": true,
+          "reason": ""
+        },
+        "traceable": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_invented_facts": {
+          "passed": true,
+          "reason": ""
+        }
+      },
+      {
+        "story_id": "S5",
+        "specific_role": {
+          "passed": true,
+          "reason": ""
+        },
+        "single_goal": {
+          "passed": true,
+          "reason": ""
+        },
+        "testable_criteria": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_vague_words": {
+          "passed": true,
+          "reason": ""
+        },
+        "traceable": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_invented_facts": {
+          "passed": false,
+          "reason": "'every 5 minutes for up to 24 hours' is not in the notes."
+        }
+      },
+      {
+        "story_id": "S6",
+        "specific_role": {
+          "passed": true,
+          "reason": ""
+        },
+        "single_goal": {
+          "passed": true,
+          "reason": ""
+        },
+        "testable_criteria": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_vague_words": {
+          "passed": true,
+          "reason": ""
+        },
+        "traceable": {
+          "passed": true,
+          "reason": ""
+        },
+        "no_invented_facts": {
+          "passed": true,
+          "reason": ""
+        }
+      }
+    ],
+    "non_functional": [
+      {
+        "id": "N1",
+        "measurable": true,
+        "reason": ""
+      },
+      {
+        "id": "N2",
+        "measurable": false,
+        "reason": "'Near real time' has no number; nobody defined one."
+      }
+    ],
+    "open_questions": [
+      {
+        "topic": "Consent withdrawal",
+        "question": "What happens when a patient withdraws consent after a result was sent?",
+        "related_story_ids": [
+          "S2"
+        ]
+      },
+      {
+        "topic": "Consent check",
+        "question": "Is consent checked per result or per patient, and how current must it be?",
+        "related_story_ids": [
+          "S2"
+        ]
+      },
+      {
+        "topic": "FHIR version",
+        "question": "Which version of the NHX FHIR specification applies?",
+        "related_story_ids": [
+          "S1"
+        ]
+      }
+    ]
+  }
+}

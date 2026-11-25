@@ -1,0 +1,200 @@
+{
+  "fake": true,
+  "label": "FAKE: hand-written demo data, not real model output",
+  "set": "01_maintenance",
+  "kind": "writer",
+  "purpose": "Demo writer output. Deliberate faults: S4 'loads quickly' (no measure), S5 two goals, S6 'As a user', S7 invented '5 working days', N1 has no measure.",
+  "content": {
+    "stories": [
+      {
+        "id": "S1",
+        "role": "ward nurse",
+        "goal": "to report broken equipment from the ward PC",
+        "benefit": "requests are not lost",
+        "source_sentences": [
+          4,
+          5
+        ]
+      },
+      {
+        "id": "S2",
+        "role": "biomedical engineer",
+        "goal": "requests to be prioritised with life-support equipment first",
+        "benefit": "critical equipment is repaired first",
+        "source_sentences": [
+          6
+        ]
+      },
+      {
+        "id": "S3",
+        "role": "biomedical engineer",
+        "goal": "each request routed to the right engineering team (imaging, lab, general)",
+        "benefit": "the right engineers see it",
+        "source_sentences": [
+          7
+        ]
+      },
+      {
+        "id": "S4",
+        "role": "head of biomedical engineering",
+        "goal": "to see open requests per team and how long each has been open",
+        "benefit": "I can manage the workload",
+        "source_sentences": [
+          8
+        ]
+      },
+      {
+        "id": "S5",
+        "role": "ward nurse",
+        "goal": "to be notified when the equipment I reported is fixed and track its repair",
+        "benefit": "I know when it can be used again",
+        "source_sentences": [
+          10
+        ]
+      },
+      {
+        "id": "S6",
+        "role": "user",
+        "goal": "to sign in with my hospital login",
+        "benefit": "I don't need a separate password",
+        "source_sentences": [
+          9
+        ]
+      },
+      {
+        "id": "S7",
+        "role": "head of biomedical engineering",
+        "goal": "to receive a monthly maintenance report within 5 working days of month end",
+        "benefit": "management sees how equipment is maintained",
+        "source_sentences": [
+          11
+        ]
+      }
+    ],
+    "criteria": [
+      {
+        "id": "S1-AC1",
+        "story_id": "S1",
+        "given": "I am logged in on the ward PC",
+        "when": "I submit a request with equipment, location and description",
+        "then": "the request is saved and I see a reference number"
+      },
+      {
+        "id": "S1-AC2",
+        "story_id": "S1",
+        "given": "I am creating a request",
+        "when": "I attach a photo",
+        "then": "the photo is stored with the request"
+      },
+      {
+        "id": "S1-AC3",
+        "story_id": "S1",
+        "given": "a required field is empty",
+        "when": "I submit",
+        "then": "the request is not saved and the missing field is shown"
+      },
+      {
+        "id": "S2-AC1",
+        "story_id": "S2",
+        "given": "a request for life-support equipment",
+        "when": "it is submitted",
+        "then": "it gets the highest priority"
+      },
+      {
+        "id": "S3-AC1",
+        "story_id": "S3",
+        "given": "a request for imaging equipment",
+        "when": "it is submitted",
+        "then": "it appears in the imaging team's queue"
+      },
+      {
+        "id": "S4-AC1",
+        "story_id": "S4",
+        "given": "open requests exist",
+        "when": "I open the overview",
+        "then": "the overview loads quickly and shows the number of open requests per team and the age of each request"
+      },
+      {
+        "id": "S5-AC1",
+        "story_id": "S5",
+        "given": "a request I submitted",
+        "when": "it is marked fixed",
+        "then": "I receive a notification"
+      },
+      {
+        "id": "S6-AC1",
+        "story_id": "S6",
+        "given": "I have a hospital account",
+        "when": "I open the system",
+        "then": "I sign in with it and no separate password is required"
+      },
+      {
+        "id": "S7-AC1",
+        "story_id": "S7",
+        "given": "a month has ended",
+        "when": "the report is produced",
+        "then": "the head of biomedical engineering receives it"
+      }
+    ],
+    "open_questions": [
+      {
+        "id": "Q1",
+        "topic": "Priority owner",
+        "question": "Who sets the priority: the nurse when reporting, or engineering on triage?",
+        "related_story_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "Q2",
+        "topic": "Life-support list",
+        "question": "How is life-support equipment identified: from an asset list, or chosen by the nurse?",
+        "related_story_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "Q3",
+        "topic": "Team routing",
+        "question": "Is a request routed by equipment type, or is the team chosen by hand?",
+        "related_story_ids": [
+          "S3"
+        ]
+      },
+      {
+        "id": "Q4",
+        "topic": "Meaning of fixed",
+        "question": "What counts as fixed: repaired, tested, or returned to the ward?",
+        "related_story_ids": [
+          "S5"
+        ]
+      },
+      {
+        "id": "Q5",
+        "topic": "Report format",
+        "question": "What format will the monthly report have? Ravi will send it.",
+        "related_story_ids": [
+          "S7"
+        ]
+      },
+      {
+        "id": "Q6",
+        "topic": "Downtime target",
+        "question": "What is the downtime target, and who decides it?",
+        "related_story_ids": []
+      }
+    ],
+    "non_functional": [
+      {
+        "id": "N1",
+        "category": "availability",
+        "statement": "A downtime target for equipment was mentioned but not decided.",
+        "measure": "",
+        "source_sentences": [
+          12
+        ]
+      }
+    ],
+    "out_of_scope": []
+  }
+}

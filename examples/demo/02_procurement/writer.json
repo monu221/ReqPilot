@@ -1,0 +1,218 @@
+{
+  "fake": true,
+  "label": "FAKE: hand-written demo data, not real model output",
+  "set": "02_procurement",
+  "kind": "writer",
+  "purpose": "Demo writer output. Deliberate faults: S4 invented '3 working days', S6 cites the wrong sentence (16 instead of 17), S8 'as appropriate'.",
+  "content": {
+    "stories": [
+      {
+        "id": "S1",
+        "role": "department staff member",
+        "goal": "to submit a purchase request through an online form",
+        "benefit": "requests are complete and not lost in email",
+        "source_sentences": [
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "id": "S2",
+        "role": "finance controller",
+        "goal": "each request routed to the right approvers based on its amount",
+        "benefit": "the approval rules are applied consistently",
+        "source_sentences": [
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      {
+        "id": "S3",
+        "role": "requester",
+        "goal": "to see the status of my request at any time",
+        "benefit": "I know where it is in the approval process",
+        "source_sentences": [
+          11,
+          12
+        ]
+      },
+      {
+        "id": "S4",
+        "role": "approver",
+        "goal": "to receive a reminder when a request is waiting for me",
+        "benefit": "requests are not delayed",
+        "source_sentences": [
+          13
+        ]
+      },
+      {
+        "id": "S5",
+        "role": "approver",
+        "goal": "to reject a request with a reason",
+        "benefit": "the requester knows what to change",
+        "source_sentences": [
+          14
+        ]
+      },
+      {
+        "id": "S6",
+        "role": "finance controller",
+        "goal": "an audit trail of all approval actions",
+        "benefit": "I can see who approved what and when",
+        "source_sentences": [
+          16
+        ]
+      },
+      {
+        "id": "S7",
+        "role": "procurement manager",
+        "goal": "approved requests exported to the ERP system",
+        "benefit": "orders do not have to be entered twice",
+        "source_sentences": [
+          16
+        ]
+      },
+      {
+        "id": "S8",
+        "role": "procurement manager",
+        "goal": "urgent requests approved faster",
+        "benefit": "urgent purchases are not held up",
+        "source_sentences": [
+          15
+        ]
+      }
+    ],
+    "criteria": [
+      {
+        "id": "S1-AC1",
+        "story_id": "S1",
+        "given": "I am logged in",
+        "when": "I submit a request without a budget code",
+        "then": "it is not submitted and the missing budget code is shown"
+      },
+      {
+        "id": "S1-AC2",
+        "story_id": "S1",
+        "given": "I am submitting a request",
+        "when": "no quote is attached",
+        "then": "it is not submitted and I am asked to attach at least one quote"
+      },
+      {
+        "id": "S1-AC3",
+        "story_id": "S1",
+        "given": "all required fields and a quote are provided",
+        "when": "I submit",
+        "then": "the request is saved with a reference number"
+      },
+      {
+        "id": "S2-AC1",
+        "story_id": "S2",
+        "given": "a request under 5,000 EUR",
+        "when": "it is submitted",
+        "then": "only the department head is asked to approve"
+      },
+      {
+        "id": "S2-AC2",
+        "story_id": "S2",
+        "given": "a request between 5,000 and 50,000 EUR",
+        "when": "it is submitted",
+        "then": "the department head and finance are asked to approve"
+      },
+      {
+        "id": "S2-AC3",
+        "story_id": "S2",
+        "given": "a request over 50,000 EUR",
+        "when": "it is submitted",
+        "then": "the department head, finance and the managing director are asked to approve"
+      },
+      {
+        "id": "S3-AC1",
+        "story_id": "S3",
+        "given": "I submitted a request",
+        "when": "I open it",
+        "then": "I see its current status and which approver it is waiting for"
+      },
+      {
+        "id": "S4-AC1",
+        "story_id": "S4",
+        "given": "a request has waited for my approval for 3 working days",
+        "when": "the third working day ends",
+        "then": "I receive a reminder"
+      },
+      {
+        "id": "S5-AC1",
+        "story_id": "S5",
+        "given": "I reject a request",
+        "when": "I do not enter a reason",
+        "then": "the rejection is not saved"
+      },
+      {
+        "id": "S5-AC2",
+        "story_id": "S5",
+        "given": "I reject a request with a reason",
+        "when": "I save",
+        "then": "the requester is notified with the reason"
+      },
+      {
+        "id": "S6-AC1",
+        "story_id": "S6",
+        "given": "any approval or rejection",
+        "when": "it is saved",
+        "then": "the user, the action, the date and the time are recorded and cannot be changed"
+      },
+      {
+        "id": "S7-AC1",
+        "story_id": "S7",
+        "given": "a request is fully approved",
+        "when": "the export runs",
+        "then": "the request appears in the ERP system"
+      },
+      {
+        "id": "S8-AC1",
+        "story_id": "S8",
+        "given": "a request is marked urgent",
+        "when": "it is submitted",
+        "then": "it is approved as appropriate"
+      }
+    ],
+    "open_questions": [
+      {
+        "id": "Q1",
+        "topic": "Threshold edges",
+        "question": "Which approval level applies at exactly 5,000 EUR and exactly 50,000 EUR?",
+        "related_story_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "Q2",
+        "topic": "VAT",
+        "question": "Is the amount judged including or excluding VAT?",
+        "related_story_ids": [
+          "S2"
+        ]
+      },
+      {
+        "id": "Q3",
+        "topic": "Urgent definition",
+        "question": "What counts as urgent, and who may mark a request as urgent?",
+        "related_story_ids": [
+          "S8"
+        ]
+      },
+      {
+        "id": "Q4",
+        "topic": "ERP feasibility",
+        "question": "Is an export to the ERP system possible? Tom is checking.",
+        "related_story_ids": [
+          "S7"
+        ]
+      }
+    ],
+    "non_functional": [],
+    "out_of_scope": []
+  }
+}

@@ -1,0 +1,2 @@
+{"fake": true, "label": "FAKE: hand-written demo data, not real model output", "purpose": "Groq 401 for a wrong key.",
+ "http": {"status": 401, "body": {"error": {"message": "Invalid API Key", "type": "invalid_request_error", "code": "invalid_api_key"}}}}
