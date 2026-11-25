@@ -1,5 +1,5 @@
-Summary,Description,Acceptance Criteria,Issue Type,Labels,Labels,Labels
-"As a clinician at another provider, I want validated lab results from Northfield Clinic available in the national health record, so that I can see them when treating the patient.","DEMO DATA, NOT REAL MODEL OUTPUT.
+Summary,Description,Acceptance Criteria,Issue Type,Labels,Labels,Labels,Labels
+Validated lab results from Northfield Clinic available in the national health…,"DEMO DATA, NOT REAL MODEL OUTPUT.
 
 As a clinician at another provider, I want validated lab results from Northfield Clinic available in the national health record, so that I can see them when treating the patient.
 
@@ -10,8 +10,8 @@ Test cases:
 - T2: Unvalidated result is not sent
 
 ReqPilot id: S1","S1-AC1: Given a lab result is validated and the patient has consented, when validation is completed, then the result is sent to NHX as a FHIR resource as the NHX specification requires.
-S1-AC2: Given a lab result is not yet validated, when it is saved, then it is not sent.",Story,reqpilot,demo-data,
-"As a data protection officer, I want results sent only for patients who have consented, so that patient data is shared lawfully.","DEMO DATA, NOT REAL MODEL OUTPUT.
+S1-AC2: Given a lab result is not yet validated, when it is saved, then it is not sent.",Story,reqpilot,demo-data,,
+Results sent only for patients who have consented,"DEMO DATA, NOT REAL MODEL OUTPUT.
 
 As a data protection officer, I want results sent only for patients who have consented, so that patient data is shared lawfully.
 
@@ -20,8 +20,8 @@ Source: [9] Mrs. Weber: send only if the patient has consented, consent stored i
 Test cases:
 - T3: No consent, no message
 
-ReqPilot id: S2","S2-AC1: Given the HIS records no consent for the patient, when a result is validated, then it is not sent and the reason is logged.",Story,reqpilot,demo-data,
-"As a lab manager, I want a corrected result to replace the earlier version in NHX, so that no outdated or duplicate results are shown.","DEMO DATA, NOT REAL MODEL OUTPUT.
+ReqPilot id: S2","S2-AC1: Given the HIS records no consent for the patient, when a result is validated, then it is not sent and the reason is logged.",Story,reqpilot,demo-data,,
+A corrected result to replace the earlier version in NHX,"DEMO DATA, NOT REAL MODEL OUTPUT.
 
 As a lab manager, I want a corrected result to replace the earlier version in NHX, so that no outdated or duplicate results are shown.
 
@@ -30,8 +30,8 @@ Source: [7] Priya: corrected results must replace the earlier version, not dupli
 Test cases:
 - T4: Correction updates the same result
 
-ReqPilot id: S3","S3-AC1: Given a result was already sent, when a corrected version is validated, then NHX receives it as an update of the same result, not as a new result.",Story,reqpilot,demo-data,
-"As an integration lead, I want every message to NHX authenticated with a token, so that only authorised systems can send data.","DEMO DATA, NOT REAL MODEL OUTPUT.
+ReqPilot id: S3","S3-AC1: Given a result was already sent, when a corrected version is validated, then NHX receives it as an update of the same result, not as a new result.",Story,reqpilot,demo-data,,
+Every message to NHX authenticated with a token,"DEMO DATA, NOT REAL MODEL OUTPUT.
 
 As an integration lead, I want every message to NHX authenticated with a token, so that only authorised systems can send data.
 
@@ -42,18 +42,22 @@ Test cases:
 - T6: Invalid token blocks sending
 
 ReqPilot id: S4","S4-AC1: Given a message is ready, when it is transmitted, then it carries a valid NHX token.
-S4-AC2: Given the token is invalid or expired, when a message is sent, then it is not transmitted and an error is logged.",Story,reqpilot,demo-data,
-"As an integration lead, I want messages kept and retried when NHX is unavailable, so that no result is lost.","DEMO DATA, NOT REAL MODEL OUTPUT.
+S4-AC2: Given the token is invalid or expired, when a message is sent, then it is not transmitted and an error is logged.",Story,reqpilot,demo-data,,
+Messages kept and retried when NHX is unavailable,"DEMO DATA, NOT REAL MODEL OUTPUT.
 
 As an integration lead, I want messages kept and retried when NHX is unavailable, so that no result is lost.
+
+Unresolved flags (accepted anyway):
+- Reviewer, no invented facts: 'every 5 minutes for up to 24 hours' is not in the notes.
+- Python check (S5-AC1): number(s) not in the notes, possibly invented: 5
 
 Source: [11] if NHX is down, messages should not be lost, retry later
 
 Test cases:
 - T7: Retry when NHX is down
 
-ReqPilot id: S5","S5-AC1: Given NHX does not respond, when a message is sent, then it is retried every 5 minutes for up to 24 hours.",Story,reqpilot,demo-data,
-"As an integration lead, I want to see messages rejected by NHX with the reason, so that the rejections can be fixed and resent.","DEMO DATA, NOT REAL MODEL OUTPUT.
+ReqPilot id: S5","S5-AC1: Given NHX does not respond, when a message is sent, then it is retried every 5 minutes for up to 24 hours.",Story,reqpilot,demo-data,needs-review,
+See messages rejected by NHX with the reason,"DEMO DATA, NOT REAL MODEL OUTPUT.
 
 As an integration lead, I want to see messages rejected by NHX with the reason, so that the rejections can be fixed and resent.
 
@@ -62,8 +66,8 @@ Source: [12] Jonas: NHX can reject a message, someone must see and fix the rejec
 Test cases:
 - T8: Rejected message can be corrected and resent
 
-ReqPilot id: S6","S6-AC1: Given NHX rejects a message, when the rejection is received, then it appears in a rejection list with the reason and can be resent after correction.",Story,reqpilot,demo-data,
-"Non-functional (volume): Roughly 3,000 results per day, with a peak in the morning.","DEMO DATA, NOT REAL MODEL OUTPUT.
+ReqPilot id: S6","S6-AC1: Given NHX rejects a message, when the rejection is received, then it appears in a rejection list with the reason and can be resent after correction.",Story,reqpilot,demo-data,,
+"Volume: Roughly 3,000 results per day, with a peak in the morning.","DEMO DATA, NOT REAL MODEL OUTPUT.
 
 Roughly 3,000 results per day, with a peak in the morning.
 
@@ -71,13 +75,94 @@ Measure: 3,000 results per day
 
 Source: [13] volume roughly 3,000 results per day, peak in the morning
 
-ReqPilot id: N1",,Task,reqpilot,non-functional,demo-data
-Non-functional (latency): Results are sent near real time.,"DEMO DATA, NOT REAL MODEL OUTPUT.
+ReqPilot id: N1",,Task,reqpilot,non-functional,demo-data,
+Latency: Results are sent near real time.,"DEMO DATA, NOT REAL MODEL OUTPUT.
 
 Results are sent near real time.
+
+Unresolved flags (accepted anyway):
+- Reviewer: not measurable. 'Near real time' has no number; nobody defined one
+- Python check (N2): latency: no number and unit; needs an open question for the target
 
 Measure: not given (open question)
 
 Source: [14] should be ""near real time"", nobody defined a number
 
-ReqPilot id: N2",,Task,reqpilot,non-functional,demo-data
+ReqPilot id: N2",,Task,reqpilot,non-functional,demo-data,needs-review
+Delivery delay: What is the maximum delay from validation to delivery that…,"DEMO DATA, NOT REAL MODEL OUTPUT.
+
+What is the maximum delay from validation to delivery that counts as 'near real time'?
+
+Affects: the whole set (no particular story).
+
+Raised by: writer
+
+ReqPilot id: Q1",,Task,reqpilot,open-question,demo-data,
+Morning peak: How many results per hour arrive at the morning peak?,"DEMO DATA, NOT REAL MODEL OUTPUT.
+
+How many results per hour arrive at the morning peak?
+
+Affects: the whole set (no particular story).
+
+Raised by: writer
+
+ReqPilot id: Q2",,Task,reqpilot,open-question,demo-data,
+"Retry policy: How often and for how long are messages retried, and who is…","DEMO DATA, NOT REAL MODEL OUTPUT.
+
+How often and for how long are messages retried, and who is alerted when retries stop?
+
+Affects stories: S5 (Messages kept and retried when NHX is unavailable)
+(ReqPilot ids; each story's description ends with its ReqPilot id.)
+
+Raised by: writer
+
+ReqPilot id: Q3",,Task,reqpilot,open-question,demo-data,
+"Rejection owner: Who owns the rejection list, and how fast must rejections be…","DEMO DATA, NOT REAL MODEL OUTPUT.
+
+Who owns the rejection list, and how fast must rejections be fixed?
+
+Affects stories: S6 (See messages rejected by NHX with the reason)
+(ReqPilot ids; each story's description ends with its ReqPilot id.)
+
+Raised by: writer
+
+ReqPilot id: Q4",,Task,reqpilot,open-question,demo-data,
+Go-live date: What is the confirmed national deadline?,"DEMO DATA, NOT REAL MODEL OUTPUT.
+
+What is the confirmed national deadline?
+
+Affects: the whole set (no particular story).
+
+Raised by: writer
+
+ReqPilot id: Q5",,Task,reqpilot,open-question,demo-data,
+Consent withdrawal: What happens when a patient withdraws consent after a…,"DEMO DATA, NOT REAL MODEL OUTPUT.
+
+What happens when a patient withdraws consent after a result was sent?
+
+Affects stories: S2 (Results sent only for patients who have consented)
+(ReqPilot ids; each story's description ends with its ReqPilot id.)
+
+Raised by: reviewer
+
+ReqPilot id: R1",,Task,reqpilot,open-question,demo-data,
+"Consent check: Is consent checked per result or per patient, and how current…","DEMO DATA, NOT REAL MODEL OUTPUT.
+
+Is consent checked per result or per patient, and how current must it be?
+
+Affects stories: S2 (Results sent only for patients who have consented)
+(ReqPilot ids; each story's description ends with its ReqPilot id.)
+
+Raised by: reviewer
+
+ReqPilot id: R2",,Task,reqpilot,open-question,demo-data,
+FHIR version: Which version of the NHX FHIR specification applies?,"DEMO DATA, NOT REAL MODEL OUTPUT.
+
+Which version of the NHX FHIR specification applies?
+
+Affects stories: S1 (Validated lab results from Northfield Clinic available in the national health…)
+(ReqPilot ids; each story's description ends with its ReqPilot id.)
+
+Raised by: reviewer
+
+ReqPilot id: R3",,Task,reqpilot,open-question,demo-data,

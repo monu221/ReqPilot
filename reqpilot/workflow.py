@@ -14,6 +14,7 @@ from dataclasses import dataclass, field
 from reqpilot import llm, reviewer, testcases, writer
 from reqpilot.checks import Finding, run_checks
 from reqpilot.demo import DemoSet
+from reqpilot.flags import unresolved_flags
 from reqpilot.models import Requirements, StoryStatus, TestCase
 from reqpilot.notes import Sentence, split_notes
 from reqpilot.reviewer import Review
@@ -109,16 +110,26 @@ def make_test_cases(
     ws.warnings.extend(f"Test cases: {w}" for w in generated.warnings)
 
 
-def set_status(ws: Workspace, item_id: str, status: StoryStatus) -> None:
+def flags(ws: Workspace, item_id: str) -> list[str]:
+    """Unresolved reviewer and Python flags on a story or non-functional item."""
     if ws.req is None:
-        return
+        return []
+    return unresolved_flags(item_id, ws.req, ws.review, ws.findings(), ws.edited)
+
+
+def set_status(ws: Workspace, item_id: str, status: StoryStatus) -> list[str]:
+    """Change a decision. Returns the unresolved flags if a flagged item was just accepted,
+    so the caller can warn; otherwise an empty list."""
+    if ws.req is None:
+        return []
     for item in [*ws.req.stories, *ws.req.non_functional, *ws.req.out_of_scope]:
         if item.id == item_id:
-            if item.status != status:
-                item.status = status
-                # Test cases were made for the old decisions.
-                ws.test_cases = [t for t in ws.test_cases if _story_of(ws, t) != item_id]
-            return
+            if item.status == status:
+                return []
+            item.status = status
+            # Test cases were made for the old decisions.
+            ws.test_cases = [t for t in ws.test_cases if _story_of(ws, t) != item_id]
+            return flags(ws, item_id) if status == StoryStatus.ACCEPTED else []
     raise KeyError(item_id)
 
 

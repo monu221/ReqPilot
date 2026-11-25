@@ -1,5 +1,5 @@
-Summary,Description,Acceptance Criteria,Issue Type,Labels,Labels,Labels
-"As a ward nurse, I want to report broken equipment from the ward PC, so that requests are not lost.","DEMO DATA, NOT REAL MODEL OUTPUT.
+Summary,Description,Acceptance Criteria,Issue Type,Labels,Labels,Labels,Labels
+Report broken equipment from the ward PC,"DEMO DATA, NOT REAL MODEL OUTPUT.
 
 As a ward nurse, I want to report broken equipment from the ward PC, so that requests are not lost.
 
@@ -12,8 +12,8 @@ Test cases:
 
 ReqPilot id: S1","S1-AC1: Given I am logged in on the ward PC, when I submit a request with equipment, location and description, then the request is saved and I see a reference number.
 S1-AC2: Given I am creating a request, when I attach a photo, then the photo is stored with the request.
-S1-AC3: Given a required field is empty, when I submit, then the request is not saved and the missing field is shown.",Story,reqpilot,demo-data,
-"As a biomedical engineer, I want requests to be prioritised with life-support equipment first, so that critical equipment is repaired first.","DEMO DATA, NOT REAL MODEL OUTPUT.
+S1-AC3: Given a required field is empty, when I submit, then the request is not saved and the missing field is shown.",Story,reqpilot,demo-data,,
+Requests to be prioritised with life-support equipment first,"DEMO DATA, NOT REAL MODEL OUTPUT.
 
 As a biomedical engineer, I want requests to be prioritised with life-support equipment first, so that critical equipment is repaired first.
 
@@ -22,8 +22,8 @@ Source: [6] Ravi: engineers need a priority, life-support equipment first
 Test cases:
 - T4: Life-support request gets top priority
 
-ReqPilot id: S2","S2-AC1: Given a request for life-support equipment, when it is submitted, then it gets the highest priority.",Story,reqpilot,demo-data,
-"As a biomedical engineer, I want each request routed to the right engineering team (imaging, lab, general), so that the right engineers see it.","DEMO DATA, NOT REAL MODEL OUTPUT.
+ReqPilot id: S2","S2-AC1: Given a request for life-support equipment, when it is submitted, then it gets the highest priority.",Story,reqpilot,demo-data,,
+"Each request routed to the right engineering team (imaging, lab, general)","DEMO DATA, NOT REAL MODEL OUTPUT.
 
 As a biomedical engineer, I want each request routed to the right engineering team (imaging, lab, general), so that the right engineers see it.
 
@@ -32,53 +32,150 @@ Source: [7] requests should go to the right engineering team (imaging, lab, gene
 Test cases:
 - T5: Imaging request goes to imaging
 
-ReqPilot id: S3","S3-AC1: Given a request for imaging equipment, when it is submitted, then it appears in the imaging team's queue.",Story,reqpilot,demo-data,
-"As a head of biomedical engineering, I want to see open requests per team and how long each has been open, so that I can manage the workload.","DEMO DATA, NOT REAL MODEL OUTPUT.
+ReqPilot id: S3","S3-AC1: Given a request for imaging equipment, when it is submitted, then it appears in the imaging team's queue.",Story,reqpilot,demo-data,,
+See open requests per team and how long each has been open,"DEMO DATA, NOT REAL MODEL OUTPUT.
 
 As a head of biomedical engineering, I want to see open requests per team and how long each has been open, so that I can manage the workload.
+
+Unresolved flags (accepted anyway):
+- Python check (S4-AC1): ""quickly"" without a number and unit; not testable
 
 Source: [8] Ravi wants to see open requests per team and how long they have been open
 
 Test cases:
 - T6: Overview shows open requests per team
 
-ReqPilot id: S4","S4-AC1: Given open requests exist, when I open the overview, then the overview loads quickly and shows the number of open requests per team and the age of each request.",Story,reqpilot,demo-data,
-"As a ward nurse, I want to be notified when the equipment I reported is fixed and track its repair, so that I know when it can be used again.","DEMO DATA, NOT REAL MODEL OUTPUT.
+ReqPilot id: S4","S4-AC1: Given open requests exist, when I open the overview, then the overview loads quickly and shows the number of open requests per team and the age of each request.",Story,reqpilot,demo-data,needs-review,
+Be notified when the equipment I reported is fixed and track its repair,"DEMO DATA, NOT REAL MODEL OUTPUT.
 
 As a ward nurse, I want to be notified when the equipment I reported is fixed and track its repair, so that I know when it can be used again.
+
+Unresolved flags (accepted anyway):
+- Reviewer, single goal: 'is fixed and track its repair' joins two goals: notification and repair tracking.
+- Python check (S5): goal joins two actions (""and track""); split it into two stories
 
 Source: [10] notify the nurse when the equipment is fixed
 
 Test cases:
 - T7: Nurse notified when fixed
 
-ReqPilot id: S5","S5-AC1: Given a request I submitted, when it is marked fixed, then I receive a notification.",Story,reqpilot,demo-data,
-"As an user, I want to sign in with my hospital login, so that I don't need a separate password.","DEMO DATA, NOT REAL MODEL OUTPUT.
+ReqPilot id: S5","S5-AC1: Given a request I submitted, when it is marked fixed, then I receive a notification.",Story,reqpilot,demo-data,needs-review,
+Sign in with my hospital login,"DEMO DATA, NOT REAL MODEL OUTPUT.
 
 As an user, I want to sign in with my hospital login, so that I don't need a separate password.
+
+Unresolved flags (accepted anyway):
+- Reviewer, specific role: 'user' is generic; the notes concern hospital staff signing in with the hospital login.
 
 Source: [9] Tom: must use the hospital login, no separate passwords
 
 Test cases:
 - T8: Sign in with hospital login
 
-ReqPilot id: S6","S6-AC1: Given I have a hospital account, when I open the system, then I sign in with it and no separate password is required.",Story,reqpilot,demo-data,
-"As a head of biomedical engineering, I want to receive a monthly maintenance report within 5 working days of month end, so that management sees how equipment is maintained.","DEMO DATA, NOT REAL MODEL OUTPUT.
+ReqPilot id: S6","S6-AC1: Given I have a hospital account, when I open the system, then I sign in with it and no separate password is required.",Story,reqpilot,demo-data,needs-review,
+Receive a monthly maintenance report within 5 working days of month end,"DEMO DATA, NOT REAL MODEL OUTPUT.
 
 As a head of biomedical engineering, I want to receive a monthly maintenance report within 5 working days of month end, so that management sees how equipment is maintained.
+
+Unresolved flags (accepted anyway):
+- Reviewer, no invented facts: 'within 5 working days of month end' is not in the notes.
+- Python check (S7): number(s) not in the notes, possibly invented: 5
 
 Source: [11] monthly report for management, Ravi will send the format
 
 Test cases:
 - T9: Monthly report delivered
 
-ReqPilot id: S7","S7-AC1: Given a month has ended, when the report is produced, then the head of biomedical engineering receives it.",Story,reqpilot,demo-data,
-Non-functional (availability): A downtime target for equipment was mentioned but not decided.,"DEMO DATA, NOT REAL MODEL OUTPUT.
+ReqPilot id: S7","S7-AC1: Given a month has ended, when the report is produced, then the head of biomedical engineering receives it.",Story,reqpilot,demo-data,needs-review,
+Availability: A downtime target for equipment was mentioned but not decided.,"DEMO DATA, NOT REAL MODEL OUTPUT.
 
 A downtime target for equipment was mentioned but not decided.
+
+Unresolved flags (accepted anyway):
+- Reviewer: not measurable. No downtime figure is given
+- Python check (N1): availability: no number and unit; needs an open question for the target
 
 Measure: not given (open question)
 
 Source: [12] a downtime target was mentioned but not decided
 
-ReqPilot id: N1",,Task,reqpilot,non-functional,demo-data
+ReqPilot id: N1",,Task,reqpilot,non-functional,demo-data,needs-review
+"Priority owner: Who sets the priority: the nurse when reporting, or…","DEMO DATA, NOT REAL MODEL OUTPUT.
+
+Who sets the priority: the nurse when reporting, or engineering on triage?
+
+Affects stories: S2 (Requests to be prioritised with life-support equipment first)
+(ReqPilot ids; each story's description ends with its ReqPilot id.)
+
+Raised by: writer
+
+ReqPilot id: Q1",,Task,reqpilot,open-question,demo-data,
+Life-support list: How is life-support equipment identified: from an asset…,"DEMO DATA, NOT REAL MODEL OUTPUT.
+
+How is life-support equipment identified: from an asset list, or chosen by the nurse?
+
+Affects stories: S2 (Requests to be prioritised with life-support equipment first)
+(ReqPilot ids; each story's description ends with its ReqPilot id.)
+
+Raised by: writer
+
+ReqPilot id: Q2",,Task,reqpilot,open-question,demo-data,
+"Team routing: Is a request routed by equipment type, or is the team chosen by…","DEMO DATA, NOT REAL MODEL OUTPUT.
+
+Is a request routed by equipment type, or is the team chosen by hand?
+
+Affects stories: S3 (Each request routed to the right engineering team (imaging, lab, general))
+(ReqPilot ids; each story's description ends with its ReqPilot id.)
+
+Raised by: writer
+
+ReqPilot id: Q3",,Task,reqpilot,open-question,demo-data,
+"Meaning of fixed: What counts as fixed: repaired, tested, or returned to the…","DEMO DATA, NOT REAL MODEL OUTPUT.
+
+What counts as fixed: repaired, tested, or returned to the ward?
+
+Affects stories: S5 (Be notified when the equipment I reported is fixed and track its repair)
+(ReqPilot ids; each story's description ends with its ReqPilot id.)
+
+Raised by: writer
+
+ReqPilot id: Q4",,Task,reqpilot,open-question,demo-data,
+Report format: What format will the monthly report have? Ravi will send it.,"DEMO DATA, NOT REAL MODEL OUTPUT.
+
+What format will the monthly report have? Ravi will send it.
+
+Affects stories: S7 (Receive a monthly maintenance report within 5 working days of month end)
+(ReqPilot ids; each story's description ends with its ReqPilot id.)
+
+Raised by: writer
+
+ReqPilot id: Q5",,Task,reqpilot,open-question,demo-data,
+"Downtime target: What is the downtime target, and who decides it?","DEMO DATA, NOT REAL MODEL OUTPUT.
+
+What is the downtime target, and who decides it?
+
+Affects: the whole set (no particular story).
+
+Raised by: writer
+
+ReqPilot id: Q6",,Task,reqpilot,open-question,demo-data,
+"Notification channel: How should the nurse be notified: email, in the system…","DEMO DATA, NOT REAL MODEL OUTPUT.
+
+How should the nurse be notified: email, in the system, or on the ward PC?
+
+Affects stories: S5 (Be notified when the equipment I reported is fixed and track its repair)
+(ReqPilot ids; each story's description ends with its ReqPilot id.)
+
+Raised by: reviewer
+
+ReqPilot id: R1",,Task,reqpilot,open-question,demo-data,
+"Report recipients: Who receives the monthly report, and when?","DEMO DATA, NOT REAL MODEL OUTPUT.
+
+Who receives the monthly report, and when?
+
+Affects stories: S7 (Receive a monthly maintenance report within 5 working days of month end)
+(ReqPilot ids; each story's description ends with its ReqPilot id.)
+
+Raised by: reviewer
+
+ReqPilot id: R2",,Task,reqpilot,open-question,demo-data,

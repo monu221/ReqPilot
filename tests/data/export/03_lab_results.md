@@ -74,7 +74,7 @@ Acceptance criteria:
 
 - **S5-AC1** Given NHX does not respond, when a message is sent, then it is retried every 5 minutes for up to 24 hours.
 
-Quality notes:
+**Needs review.** Unresolved flags (accepted anyway):
 
 - Reviewer, no invented facts: 'every 5 minutes for up to 24 hours' is not in the notes.
 - Python check (S5-AC1): number(s) not in the notes, possibly invented: 5

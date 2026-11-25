@@ -76,3 +76,32 @@ def test_own_notes_use_the_client(monkeypatch):
     assert len(transport.requests) == 2
     assert DEMO_LABEL not in _texts(at.warning)
     assert "calls left: **18** this session" in _texts(at.sidebar.caption)
+
+
+def _lab_results(at):
+    options = at.sidebar.radio[0].options
+    at.sidebar.radio[0].set_value(next(o for o in options if o.startswith("Lab results"))).run()
+    _button(at, "Load demo stories").click().run()
+    return at
+
+
+def test_accepting_flagged_stories_shows_a_warning():
+    at = _lab_results(AppTest.from_file(APP, default_timeout=60).run())
+    assert "accepted with" not in _texts(at.warning)
+    _button(at, "Accept all stories").click().run()
+    assert not at.exception
+    warnings = _texts(at.warning)
+    assert "S5 was accepted with 2 unresolved flag(s)" in warnings
+    assert "every 5 minutes for up to 24 hours" in warnings
+    assert "needs-review" in warnings
+    assert "S1 was accepted" not in warnings
+
+
+def test_export_offers_criteria_in_description():
+    at = _lab_results(AppTest.from_file(APP, default_timeout=60).run())
+    _button(at, "Accept all stories").click().run()
+    label = "Put acceptance criteria in the description (no Jira custom field needed)"
+    labels = [c.label for c in at.checkbox]
+    assert label in labels
+    at.checkbox[labels.index(label)].check().run()
+    assert not at.exception

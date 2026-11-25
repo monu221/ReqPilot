@@ -60,7 +60,7 @@ Acceptance criteria:
 
 - **S4-AC1** Given open requests exist, when I open the overview, then the overview loads quickly and shows the number of open requests per team and the age of each request.
 
-Quality notes:
+**Needs review.** Unresolved flags (accepted anyway):
 
 - Python check (S4-AC1): "quickly" without a number and unit; not testable
 
@@ -78,7 +78,7 @@ Acceptance criteria:
 
 - **S5-AC1** Given a request I submitted, when it is marked fixed, then I receive a notification.
 
-Quality notes:
+**Needs review.** Unresolved flags (accepted anyway):
 
 - Reviewer, single goal: 'is fixed and track its repair' joins two goals: notification and repair tracking.
 - Python check (S5): goal joins two actions ("and track"); split it into two stories
@@ -97,7 +97,7 @@ Acceptance criteria:
 
 - **S6-AC1** Given I have a hospital account, when I open the system, then I sign in with it and no separate password is required.
 
-Quality notes:
+**Needs review.** Unresolved flags (accepted anyway):
 
 - Reviewer, specific role: 'user' is generic; the notes concern hospital staff signing in with the hospital login.
 
@@ -115,7 +115,7 @@ Acceptance criteria:
 
 - **S7-AC1** Given a month has ended, when the report is produced, then the head of biomedical engineering receives it.
 
-Quality notes:
+**Needs review.** Unresolved flags (accepted anyway):
 
 - Reviewer, no invented facts: 'within 5 working days of month end' is not in the notes.
 - Python check (S7): number(s) not in the notes, possibly invented: 5

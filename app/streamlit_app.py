@@ -33,6 +33,7 @@ def _state():
     ss.setdefault("llm_session", llm.LlmSession())
     ss.setdefault("ws", None)
     ss.setdefault("ws_source", None)
+    ss.setdefault("accept_notices", {})  # item id -> flags, shown once after accepting
     return ss
 
 
@@ -125,11 +126,20 @@ c4.metric("Reviewer and Python disagree", disagreements if ws.review else "–")
 
 b1, b2, _ = st.columns([1, 1, 4])
 if b1.button("Accept all stories"):
-    for s in req.stories:
-        workflow.set_status(ws, s.id, StoryStatus.ACCEPTED)
+    notices = {s.id: workflow.set_status(ws, s.id, StoryStatus.ACCEPTED) for s in req.stories}
+    ss.accept_notices = {i: f for i, f in notices.items() if f}
 if b2.button("Reset decisions"):
     for s in [*req.stories, *req.non_functional, *req.out_of_scope]:
         workflow.set_status(ws, s.id, StoryStatus.DRAFT)
+
+for item_id, item_flags in ss.accept_notices.items():
+    st.warning(
+        f"**{item_id} was accepted with {len(item_flags)} unresolved flag(s).** It will be "
+        f"exported with the label `{export.NEEDS_REVIEW}`.\n\n"
+        + "\n".join(f"- {f}" for f in item_flags),
+        icon="⚠️",
+    )
+ss.accept_notices = {}
 
 text_of = {s.number: s.text for s in ws.sentences}
 flagged_stories = {f.story_id for f in findings if f.story_id}
@@ -142,7 +152,8 @@ def _decision(item_id: str, status: StoryStatus) -> None:
         format_func=STATUS_LABELS.get, horizontal=True, key=f"{k}-{item_id}-{status}-status",
     )  # fmt: skip
     if choice != status:
-        workflow.set_status(ws, item_id, choice)
+        flagged = workflow.set_status(ws, item_id, choice)
+        ss.accept_notices = {item_id: flagged} if flagged else {}
         st.rerun()
 
 
@@ -186,6 +197,11 @@ for story in req.stories:
                 f for c in req.criteria_for(story.id) for f in by_item.get(c.id, [])
             ]:
                 st.warning(f"{f.item_id}: {f.message}")
+        if story.status == StoryStatus.ACCEPTED and (open_flags := workflow.flags(ws, story.id)):
+            st.warning(
+                f"Accepted with unresolved flags; exported as `{export.NEEDS_REVIEW}`: "
+                + "; ".join(open_flags)
+            )
         _decision(story.id, story.status)
 
 if req.non_functional or req.out_of_scope:
@@ -271,15 +287,23 @@ else:
 
 st.header("5. Export")
 note = f" Files from this set are marked: {DEMO_LABEL}." if ws.is_demo else ""
-st.caption("Only accepted items are exported; open questions are always included." + note)
+st.caption(
+    "Only accepted items are exported, plus the open questions about them. Accepted items "
+    f"with unresolved flags are labelled `{export.NEEDS_REVIEW}`." + note
+)
 if not export.has_accepted(req):
     st.caption("Accept at least one item to export.")
 else:
     stem = ws.demo.name if ws.demo else "reqpilot"
+    criteria_in_desc = st.checkbox(
+        "Put acceptance criteria in the description (no Jira custom field needed)",
+        help="By default the CSV has an 'Acceptance Criteria' column, which you map to a custom "
+        "field during the Jira import. See the README.",
+    )
     e1, e2, _ = st.columns([1, 1, 4])
     e1.download_button(
         "Download Jira CSV",
-        export.to_jira_csv(req, ws.test_cases, ws.sentences, demo=ws.is_demo),
+        export.workspace_jira_csv(ws, findings, criteria_in_description=criteria_in_desc),
         file_name=f"{stem}_jira.csv",
         mime="text/csv",
     )
