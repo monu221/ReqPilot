@@ -55,7 +55,7 @@ For each accepted criterion: one or more test cases with id, title, precondition
 
 ## 5. Evaluation
 
-Data: 8–10 meeting-note sets written by the project owner from real BA experience (anonymised, invented names), each with hand-written gold stories in `data/gold/`.
+Data: 6 meeting-note sets, each with hand-written gold stories in `data/gold/`. The notes are fictional (invented names) and based on the project owner's BA experience. They were drafted with AI help and reviewed and edited by the owner.
 
 Measures per set:
 

@@ -61,7 +61,7 @@ M3, M4 and M9 need live calls for recordings and evaluation, so those steps wait
 
 ## Data for building and evaluation
 
-Three note sets (01–03) are enough to build with. The owner will add more before the final evaluation, with a target of **6**. This is below the 8–10 that the brief and method §5 mention. The evaluation report states the actual sample size.
+Three note sets (01–03) are enough to build with. The owner will add more before the final evaluation, with a target of **6**. The brief and method §5 say 6 as well (changed from 8–10 on 2026-11-25). The evaluation report states the actual sample size.
 
 ## Evaluation details
 

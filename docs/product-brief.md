@@ -25,7 +25,7 @@ Direct Jira API integration, audio transcription, non-English notes, multi-user 
 
 ## Success metric
 
-- Evaluated on 8–10 realistic note sets against expert-written gold stories: share of gold stories recovered, invented facts per set, share of generated stories passing the quality rules.
+- Evaluated on 6 realistic note sets against expert-written gold stories: share of gold stories recovered, invented facts per set, share of generated stories passing the quality rules.
 - Three bundled examples run without any AI call.
 
 ## Stack
