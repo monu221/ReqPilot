@@ -45,6 +45,8 @@ def test_demo_set_walkthrough():
     _button(at, "Make test cases").click().run()
     assert not at.exception
     assert any("Traceability" in h.value for h in at.header)
+    downloads = [d.proto.label for d in at.get("download_button")]
+    assert downloads == ["Download Jira CSV", "Download Markdown"]
     assert "calls left: **20** this session" in _texts(at.sidebar.caption)
 
 

@@ -2,7 +2,7 @@
 
 ReqPilot turns meeting notes into reviewed user stories, acceptance criteria, open questions and test cases, with a traceability matrix. See [docs/product-brief.md](docs/product-brief.md), [docs/method.md](docs/method.md) and [docs/plan.md](docs/plan.md).
 
-Status: M0–M6 built. The writer, reviewer and test cases run against **fake responses** until live calls are recorded; the bundled examples are labelled "demo data, not real model output".
+Status: M0–M7 built (CSV and Markdown export). The writer, reviewer and test cases run against **fake responses** until live calls are recorded; the bundled examples are labelled "demo data, not real model output".
 
 ## Setup
 

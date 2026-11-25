@@ -1,0 +1,83 @@
+Summary,Description,Acceptance Criteria,Issue Type,Labels,Labels,Labels
+"As a clinician at another provider, I want validated lab results from Northfield Clinic available in the national health record, so that I can see them when treating the patient.","DEMO DATA, NOT REAL MODEL OUTPUT.
+
+As a clinician at another provider, I want validated lab results from Northfield Clinic available in the national health record, so that I can see them when treating the patient.
+
+Source: [4] lab results stay in the hospital system today, other providers cannot see them; [5] NHX requires results sent as FHIR resources, Jonas has the spec; [6] send results automatically once the lab validates them
+
+Test cases:
+- T1: Validated result is sent as FHIR
+- T2: Unvalidated result is not sent
+
+ReqPilot id: S1","S1-AC1: Given a lab result is validated and the patient has consented, when validation is completed, then the result is sent to NHX as a FHIR resource as the NHX specification requires.
+S1-AC2: Given a lab result is not yet validated, when it is saved, then it is not sent.",Story,reqpilot,demo-data,
+"As a data protection officer, I want results sent only for patients who have consented, so that patient data is shared lawfully.","DEMO DATA, NOT REAL MODEL OUTPUT.
+
+As a data protection officer, I want results sent only for patients who have consented, so that patient data is shared lawfully.
+
+Source: [9] Mrs. Weber: send only if the patient has consented, consent stored in the HIS
+
+Test cases:
+- T3: No consent, no message
+
+ReqPilot id: S2","S2-AC1: Given the HIS records no consent for the patient, when a result is validated, then it is not sent and the reason is logged.",Story,reqpilot,demo-data,
+"As a lab manager, I want a corrected result to replace the earlier version in NHX, so that no outdated or duplicate results are shown.","DEMO DATA, NOT REAL MODEL OUTPUT.
+
+As a lab manager, I want a corrected result to replace the earlier version in NHX, so that no outdated or duplicate results are shown.
+
+Source: [7] Priya: corrected results must replace the earlier version, not duplicate it
+
+Test cases:
+- T4: Correction updates the same result
+
+ReqPilot id: S3","S3-AC1: Given a result was already sent, when a corrected version is validated, then NHX receives it as an update of the same result, not as a new result.",Story,reqpilot,demo-data,
+"As an integration lead, I want every message to NHX authenticated with a token, so that only authorised systems can send data.","DEMO DATA, NOT REAL MODEL OUTPUT.
+
+As an integration lead, I want every message to NHX authenticated with a token, so that only authorised systems can send data.
+
+Source: [10] every message must be authenticated, NHX uses tokens
+
+Test cases:
+- T5: Messages carry a token
+- T6: Invalid token blocks sending
+
+ReqPilot id: S4","S4-AC1: Given a message is ready, when it is transmitted, then it carries a valid NHX token.
+S4-AC2: Given the token is invalid or expired, when a message is sent, then it is not transmitted and an error is logged.",Story,reqpilot,demo-data,
+"As an integration lead, I want messages kept and retried when NHX is unavailable, so that no result is lost.","DEMO DATA, NOT REAL MODEL OUTPUT.
+
+As an integration lead, I want messages kept and retried when NHX is unavailable, so that no result is lost.
+
+Source: [11] if NHX is down, messages should not be lost, retry later
+
+Test cases:
+- T7: Retry when NHX is down
+
+ReqPilot id: S5","S5-AC1: Given NHX does not respond, when a message is sent, then it is retried every 5 minutes for up to 24 hours.",Story,reqpilot,demo-data,
+"As an integration lead, I want to see messages rejected by NHX with the reason, so that the rejections can be fixed and resent.","DEMO DATA, NOT REAL MODEL OUTPUT.
+
+As an integration lead, I want to see messages rejected by NHX with the reason, so that the rejections can be fixed and resent.
+
+Source: [12] Jonas: NHX can reject a message, someone must see and fix the rejections
+
+Test cases:
+- T8: Rejected message can be corrected and resent
+
+ReqPilot id: S6","S6-AC1: Given NHX rejects a message, when the rejection is received, then it appears in a rejection list with the reason and can be resent after correction.",Story,reqpilot,demo-data,
+"Non-functional (volume): Roughly 3,000 results per day, with a peak in the morning.","DEMO DATA, NOT REAL MODEL OUTPUT.
+
+Roughly 3,000 results per day, with a peak in the morning.
+
+Measure: 3,000 results per day
+
+Source: [13] volume roughly 3,000 results per day, peak in the morning
+
+ReqPilot id: N1",,Task,reqpilot,non-functional,demo-data
+Non-functional (latency): Results are sent near real time.,"DEMO DATA, NOT REAL MODEL OUTPUT.
+
+Results are sent near real time.
+
+Measure: not given (open question)
+
+Source: [14] should be ""near real time"", nobody defined a number
+
+ReqPilot id: N2",,Task,reqpilot,non-functional,demo-data

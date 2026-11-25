@@ -80,3 +80,16 @@ Recorded 2026-11-25.
 4. method.md §1 now includes non-functional and out-of-scope items.
 5. GitHub Issues export stays in v1 as the last milestone (M10).
 6. Three note sets are enough to build with. The target is 6 before the final evaluation.
+7. Build ahead (2026-11-25). M3–M7 were built against hand-written **fake** responses, with no live calls. The fakes live in `examples/demo/` (one set per note set) and `tests/data/fake/` (error cases). Each file is marked `"fake": true` with a FAKE label, and the loader refuses files without the marker. Until real recordings replace them, the app shows the demo sets as "Demo data, not real model output", and exports from them are marked the same way.
+8. XLSX export (optional in M7) is not built. CSV and Markdown are.
+
+## Still needs live calls
+
+Run these once the Groq quota is free:
+
+1. **Check that the schemas work with Groq strict mode.** Make one writer call, one reviewer call and one test-case call on one set. Risks: whether `openai/gpt-oss-120b` accepts the `$defs` references, and whether `max_tokens: 4000` is enough for a full writer answer.
+2. **Record real output** for the three sets with `python scripts/record_examples.py --live`. That is 9 calls (3 per set), and the output goes to `examples/recorded/`.
+3. **M8.** Switch the bundled examples to the recordings and drop the demo label for them. Add replay tests on the recordings next to the fake-response tests.
+4. **Prompt tuning.** Compare the real output with the gold files and adjust the writer and reviewer prompts. Each run costs 2–3 calls per set.
+5. **M9 evaluation.** About 4 calls per set (writer, reviewer, test cases, matching), so roughly 24 calls for 6 sets.
+

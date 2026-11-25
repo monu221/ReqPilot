@@ -7,7 +7,7 @@ from __future__ import annotations
 
 import streamlit as st
 
-from reqpilot import llm, workflow
+from reqpilot import export, llm, workflow
 from reqpilot.checks import findings_by_item
 from reqpilot.demo import DEMO_LABEL, demo_names, load_demo
 from reqpilot.models import StoryStatus
@@ -259,3 +259,26 @@ else:
             st.markdown(f"**{title}:**  \n" + "  \n".join(map(str, items)))
     if matrix.complete:
         st.success("Every accepted story has test cases and every note sentence is used.")
+
+# --------------------------------------------------------------------------- step 5: export
+
+st.header("5. Export")
+note = f" Files from this set are marked: {DEMO_LABEL}." if ws.is_demo else ""
+st.caption("Only accepted items are exported; open questions are always included." + note)
+if not export.has_accepted(req):
+    st.caption("Accept at least one item to export.")
+else:
+    stem = ws.demo.name if ws.demo else "reqpilot"
+    e1, e2, _ = st.columns([1, 1, 4])
+    e1.download_button(
+        "Download Jira CSV",
+        export.to_jira_csv(req, ws.test_cases, ws.sentences, demo=ws.is_demo),
+        file_name=f"{stem}_jira.csv",
+        mime="text/csv",
+    )
+    e2.download_button(
+        "Download Markdown",
+        export.workspace_markdown(ws, findings),
+        file_name=f"{stem}.md",
+        mime="text/markdown",
+    )
