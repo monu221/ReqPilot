@@ -13,7 +13,14 @@ from reqpilot.demo import DEMO_LABEL, demo_names, load_demo
 from reqpilot.models import StoryStatus
 from reqpilot.reviewer import compare
 
+PAGE_MAX_WIDTH_PX = 1300  # as in JunctionLab
+PAGE_CSS = (
+    "<style>.block-container, [data-testid='stMainBlockContainer'] "
+    f"{{max-width:{PAGE_MAX_WIDTH_PX}px; margin-left:auto; margin-right:auto;}}</style>"
+)
+
 st.set_page_config(page_title="ReqPilot", layout="wide")
+st.html(PAGE_CSS)
 
 OWN = "My own notes"
 STATUS_LABELS = {StoryStatus.DRAFT: "Undecided", StoryStatus.ACCEPTED: "Accept",

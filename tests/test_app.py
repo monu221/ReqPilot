@@ -50,6 +50,11 @@ def test_demo_set_walkthrough():
     assert "calls left: **20** this session" in _texts(at.sidebar.caption)
 
 
+def test_page_width_is_limited():
+    at = AppTest.from_file(APP, default_timeout=60).run()
+    assert any("max-width:1300px" in h.proto.body for h in at.get("html"))
+
+
 @pytest.mark.parametrize("index", [1, 2])
 def test_other_demo_sets_load(index):
     at = AppTest.from_file(APP, default_timeout=60).run()
