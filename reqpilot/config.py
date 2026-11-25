@@ -44,8 +44,9 @@ def _clean_words(words: tuple[str, ...]) -> tuple[str, ...]:
 class Checks(_Frozen):
     vague_words: tuple[str, ...] = Field(min_length=1)
     performance_words: tuple[str, ...] = Field(min_length=1)
+    action_verbs: tuple[str, ...] = Field(min_length=1)
 
-    _clean = field_validator("vague_words", "performance_words")(_clean_words)
+    _clean = field_validator("vague_words", "performance_words", "action_verbs")(_clean_words)
 
 
 class Config(_Frozen):
